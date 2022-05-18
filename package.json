@@ -4,7 +4,7 @@
   "description": "Database App using psql",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon -r dotenv/config server.js",
     "start": "node server.js",
     "test": "cypress open"
   },
