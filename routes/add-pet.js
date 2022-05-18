@@ -1,4 +1,4 @@
-//const db = require("../database/connection.js");
+const db = require("../database/connection.js");
 
 function get(request, response) {
     const htmlHead = /* html */ `
@@ -48,7 +48,7 @@ function get(request, response) {
 
 function post(request, response) {
     const {name, type, birth, location} = request.body;
-    //db.query(`INSERT INTO pets (name, type_id, birth_date, location) VALUES($1, $2, $3, $4)`, [name, type, birth, location]) 
+    db.query(`INSERT INTO pets (pet_name, type_id, birth_date) VALUES($1, $2, $3, $4)`, [name, 1, '2000-01-01']) 
     
     response.redirect("/add-pet"); // Redirect to birthdays when ready to.
 }
