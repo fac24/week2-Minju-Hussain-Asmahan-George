@@ -1,0 +1,30 @@
+{
+  "name": "week2-minju-hussain-asmahan-george",
+  "version": "1.0.0",
+  "description": "Database App using psql",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac24/week2-Minju-Hussain-Asmahan-George.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac24/week2-Minju-Hussain-Asmahan-George/issues"
+  },
+  "homepage": "https://github.com/fac24/week2-Minju-Hussain-Asmahan-George#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "cypress": "^9.6.1",
+    "nodemon": "^2.0.16"
+  }
+}
