@@ -1,8 +1,7 @@
 const express = require("express");
 const home = require("./routes/home.js");
 const birthdays = require("./routes/birthdays.js");
-const addPet = require("./routes/add-pet.js")
-
+const addPet = require("./routes/add-pet.js");
 
 const server = express();
 
@@ -12,6 +11,8 @@ server.use(staticHandler);
 
 // Allowing posts to look through the body of whats posted
 const bodyHandler = express.urlencoded({ extended: false });
+
+server.use(express.static("public"));
 
 server.use(bodyHandler);
 
