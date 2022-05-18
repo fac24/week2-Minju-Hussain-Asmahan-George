@@ -12,23 +12,28 @@ function get(request, response) {
   `;
 
     const selectPets = /* sql */ `
-        SELECT pets.pet_name, pets.birth_date, pet_type.pet_kind
+        SELECT pets.id, pets.pet_name, pets.birth_date, pet_type.pet_kind
         FROM pets
             INNER JOIN pet_type ON pets.type_id = pet_type.id;
     `
     db.query(selectPets).then((result) => {
-        const names = result.rows;
-        const nameList = names.map( name => {
+        const pets = result.rows;
+        const petList = pets.map( pets => {
            return /* html */ `
             <li>
-                Hiya ${name.pet_name}, you are a ${name.pet_kind}, your birthday is ${name.birth_date}
+                Hiya ${pets.pet_name}, you are a ${pets.pet_kind}, your birthday is ${pets.birth_date}
+                <form action="/delete-pet" method="POST" class="inline">
+                    <button name="id" value="${pets.id}" aria-label="Delete ${pets.pet_name}">
+                        &times;
+                    </button>
+                </form>
             </li>`
         })
         
         const htmlBody = /* html */ `
             <body>
                 <main>
-                    <ul>${nameList.join("")}</ul>
+                    <ul>${petList.join("")}</ul>
                 </main>
             </body>
         `;
