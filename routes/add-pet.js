@@ -55,8 +55,10 @@ function sanitize(unsafe_body) {
 
 function post(request, response) {
     const {name, type, birth} = sanitize(request.body);
-    model.addPet(name,type,birth)
-    response.redirect("/birthdays"); // Redirect to birthdays when ready to.
+    model.addPet(name,type,birth).then(() => {
+      response.redirect("/birthdays"); // Redirect to birthdays when ready to.
+    })
+
 }
 
 module.exports = { get, post }
