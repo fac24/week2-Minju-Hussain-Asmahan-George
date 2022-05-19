@@ -1,6 +1,7 @@
 const model = require("../database/model.js");
 
 function get(request, response) {
+  try {
     const htmlHead = /* html */ `
       <head>
         <meta charset="UTF-8" />
@@ -41,13 +42,25 @@ function get(request, response) {
       </body>
     </html>
     `;
-    response.send(html);
+      response.send(html);
+    }
+    catch (error){
+      console.error(error);
+      response.status(404).send('<h1>Error handling</h1>');
+    }
 }
 
 function post(request, response) {
+  try{
+
     const {name, type, birth} = request.body;
     model.addPet(name,type,birth)
-    response.redirect("/birthdays"); // Redirect to birthdays when ready to.
+  }
+  catch(error){
+        console.error(error)
+        response.status(404).send('<h1>Error handling</h1>')
+    }
+  response.redirect("/birthdays"); // Redirect to birthdays when ready to.
 }
 
 module.exports = { get, post }

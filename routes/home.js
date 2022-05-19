@@ -1,6 +1,7 @@
 //const db = require("../database/connection.js");
 
 function get(request, response) {
+    try {
   const html = /*html*/ `
   <!DOCTYPE html>
   <html lang="en">
@@ -45,7 +46,12 @@ function get(request, response) {
   </body>
   </html>
     `;
-  response.send(html);
+        response.send(html)
+    }
+    catch (error){
+        console.error(error)
+        response.status(404).send('<h1>Error handling</h1>')
+    }
 }
 
 module.exports = { get };
