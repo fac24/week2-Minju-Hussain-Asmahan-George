@@ -40,7 +40,7 @@ describe("Birthday Page tests", () => {
     it("Delete button works", () => {
         cy.visit("/birthdays");
         // Getting the second delete button on the page
-        cy.get("button").eq(1).click();
+        cy.get("button").eq(2).click();
         cy.contains("Dug").should("not.exist");
     });
      
