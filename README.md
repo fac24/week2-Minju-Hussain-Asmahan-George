@@ -2,7 +2,7 @@
 Database App using psql Calendar 
 
 ## Application Link:
-https://purr-thday.herokuapp.com/birthdays)
+https://purr-thday.herokuapp.com/birthdays
 
 ## To run the application as a developer:
 - Clone the repo `(week2-Minju-Hussain-Asmahan-George)` and cd into the folder.
