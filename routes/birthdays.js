@@ -21,6 +21,15 @@ function calcAge(data){
 }
 
 function get(request, response) {
+  const filterTerm = request.query.type
+  let filterType =''
+  if(filterTerm & filterTerm != 0) {
+    filterType = `pet_type.id = ${filterTerm}`
+  } else {
+    filterType = "1=1"
+  }
+  
+  
   const htmlHead = /* html */ `
     <head>
       <meta charset="UTF-8" />
@@ -31,43 +40,49 @@ function get(request, response) {
     </head>
   `;
 
-  model.selectPet().then((pets) => {
+  model.selectPet(filterType).then((pets) => {
     const petList = pets.map((pets) => {
       return /* html */ `
-            <li class="pet-card">
-            <img src="https://source.unsplash.com/random/100x100/?${pets.pet_kind}">
-            <div class='pet-info-container'>
+        <li class="pet-card">
+          <img src="https://source.unsplash.com/random/100x100/?${pets.pet_kind}">
+          <div class='pet-info-container'>
             Hiya 
             <p class="name">Name: ${pets.pet_name}</p>
             <p class="kind">Kind: ${pets.pet_kind}</p>
             <p class="birthday">birthday: ${sliceDate(pets.birth_date)}, your age is ${calcAge(pets.birth_date)}</p>
             
-            </div>
-                <form class="delete-button" action="/delete-pet" method="POST" class="inline">
-                <button name="id" value="${pets.id}" aria-label="Delete ${pets.pet_name}">
-                    &times;
-                </button>
-            </form>
-            </li>`;
+          </div>
+          <form class="delete-button" action="/delete-pet" method="POST" class="inline">
+            <button name="id" value="${pets.id}" aria-label="Delete ${pets.pet_name}">
+              &times;
+            </button>
+          </form>
+        </li>`;
     });
 
     const htmlBody = /* html */ `
 
-            <body>
-            <header class="center">
+      <body>
+        <header class="center">
           <h1 class="mb-5">PurrThday Page</h1>
           <a class="link-as-button" href="/">back home</a>
           <a class="link-as-button" href="/add-pet">add-pet</a>
-
-         
-      </header>
-                <main>
-                    <ul class="birthday-car-contianer">${petList.join("")}</ul>
-
-
-                </main>
-
-            </body>
+        </header>
+        <main>
+          <form>
+          <label for="filterType">Filter By Type Of Pet:</label>
+            <select id="filterType" placeholder="type of pet filter" name="type" aria-label="dropdown menu for filtering by pet types">
+              <option aria-label="unfiltered" value="0">Unfiltered</option>
+              <option aria-label="cat" value="1">Cat</option>
+              <option aria-label="dog" value="2">Dog</option>
+              <option aria-label="bird" value="3">Bird</option>
+              <option aria-label="rabbit" value="4">Rabbit</option>
+            </select>
+            <button>Submit</button>
+          </form>
+          <ul class="birthday-car-contianer">${petList.join("")}</ul>
+        </main>
+      </body>
         `;
 
     const html = /* html */ `
