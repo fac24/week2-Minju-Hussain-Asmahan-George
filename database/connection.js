@@ -6,6 +6,9 @@ if (!process.env.DATABASE_URL) {
 
 const options = {
   connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 };
 
 const db = new pg.Pool(options);

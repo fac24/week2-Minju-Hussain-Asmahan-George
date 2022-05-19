@@ -2,6 +2,7 @@ const express = require("express");
 const home = require("./routes/home.js");
 const birthdays = require("./routes/birthdays.js");
 const addPet = require("./routes/add-pet.js");
+const deletePet = require("./routes/delete-pet.js")
 
 const server = express();
 
@@ -20,6 +21,7 @@ server.get("/", home.get);
 server.get("/birthdays", birthdays.get);
 server.get("/add-pet", addPet.get);
 server.post("/add-pet", bodyHandler, addPet.post);
+server.post("/delete-pet", bodyHandler, deletePet.post);
 
 const PORT = process.env.PORT || 3000;
 
