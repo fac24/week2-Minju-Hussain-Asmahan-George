@@ -1,4 +1,5 @@
-# 🐱🐶 Purr-Thday: a fun app to share your pet's birthday 🐧🐰
+# 🐱🐶 Purr-Thday 🐧🐰
+### A fun app to share your pet's birthday 
 Database App using psql Calendar 
 
 ## Application Link:
