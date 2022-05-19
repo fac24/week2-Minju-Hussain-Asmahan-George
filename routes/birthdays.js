@@ -35,7 +35,7 @@ function get(request, response) {
         SELECT pets.id, pets.pet_name, pets.birth_date, pet_type.pet_kind
         FROM pets
             INNER JOIN pet_type ON pets.type_id = pet_type.id;
-
+    ``
   db.query(selectPets).then((result) => {
     const pets = result.rows;
     const petList = pets.map((pets) => {
