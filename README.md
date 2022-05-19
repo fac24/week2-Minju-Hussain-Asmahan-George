@@ -6,9 +6,9 @@ https://purr-thday.herokuapp.com/birthdays
 
 ## To run the application as a developer:
 - Clone the repo `(week2-Minju-Hussain-Asmahan-George)` and cd into the folder.
--Install all dependencies to run your server `npm install`.
--Start your server `npm run dev`.
--Visit `http://localhost:3000` to view the application.
+- Install all dependencies to run your server `npm install`.
+- Start your server `npm run dev`.
+- Visit `http://localhost:3000` to view the application.
 
 #### To run tests:
 - Install Cyress `npm install -D cypress`.
