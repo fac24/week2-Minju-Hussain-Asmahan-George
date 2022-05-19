@@ -7,12 +7,14 @@ function get(request, response) {
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="PurrThday add your pet">
+
         <title>PurrThday</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
       </head>
     `;
 
-  const petForm = /* html */ `
+    const petForm = /* html */ `
     <form class="pet-form" id="pet-form" action="/add-pet" method="POST">
     <div>
       <label for="name">Pet Name:</label>
@@ -43,7 +45,7 @@ function get(request, response) {
     </form>
     `;
 
-  const html = /* html */ `
+    const html = /* html */ `
     <!doctype html>
     <html lang="en">
       ${htmlHead}
@@ -62,12 +64,11 @@ function get(request, response) {
       </body>
     </html>
     `;
-      response.send(html);
-    }
-    catch (error){
-      console.error(error);
-      response.status(404).send('<h1>Error handling</h1>');
-    }
+    response.send(html);
+  } catch (error) {
+    console.error(error);
+    response.status(404).send("<h1>Error handling</h1>");
+  }
 }
 
 function sanitize(unsafe_body) {
@@ -80,17 +81,15 @@ function sanitize(unsafe_body) {
 }
 
 function post(request, response) {
-  try{
-
-    const {name, type, birth} = sanitize(request.body);
-    model.addPet(name,type,birth).then(() => {
+  try {
+    const { name, type, birth } = sanitize(request.body);
+    model.addPet(name, type, birth).then(() => {
       response.redirect("/birthdays"); // Redirect to birthdays when ready to.
-    })
+    });
+  } catch (error) {
+    console.error(error);
+    response.status(404).send("<h1>Error handling</h1>");
   }
-  catch(error){
-        console.error(error)
-        response.status(404).send('<h1>Error handling</h1>')
-    }
 }
 
 module.exports = { get, post };
