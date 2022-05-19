@@ -6,7 +6,7 @@ Database App using psql Calendar
 https://purr-thday.herokuapp.com/birthdays
 
 ## To run the application as a developer:
-- Clone the repo `(week2-Minju-Hussain-Asmahan-George)` and cd into the folder.
+- Clone the repo `gh repo clone fac24/week2-Minju-Hussain-Asmahan-George` and cd into the folder.
 - Install all dependencies to run your server `npm install`.
 - Start your server `npm run dev`.
 - Visit `http://localhost:3000` to view the application.
@@ -31,14 +31,17 @@ As a user, I want:
 - Homepage per pet.
 
 ## collaborators/team members
-- Minju
-- Asmahan
-- George
-- Hussain
+- Minju: DEPLOYMENT
+- Asmahan: DEVOPS
+- George: QA
+- Hussain: UI/UX
 
 ## Screenshots:
 - Mobile and Desktop:
 
+## DB schema and diagram
+- schema screenshot:
+- diagram screenshot:
 
 
 
