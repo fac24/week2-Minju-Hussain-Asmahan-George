@@ -12,9 +12,10 @@ https://purr-thday.herokuapp.com/birthdays
 - Visit `http://localhost:3000` to view the application.
 
 #### To run tests:
+- Install Cyress `npm install -D cypress`.
 - While in the project folder, run `npm run test`.
 - Edit the test.js file to make your own tests.
-- Have the server running in one terminal and Cypress in another 🖥
+- Have the server running in one terminal and Cypress 🖥
 
 ## User Stories
 As a user, I want:
@@ -30,7 +31,15 @@ As a user, I want:
 - Picture upload; and
 - Homepage per pet.
 
+## collaborators/team members
+- Minju
+- Asmahan
+- George
+- Hussain
+
 ## Screenshots:
 - Mobile and Desktop:
+
+
 
 
