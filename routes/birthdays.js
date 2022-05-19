@@ -5,7 +5,20 @@ function sliceDate(data){
     return dateFormat;
 }
 
+function calcAge(data){
+    const birthDate = new Date(data)
+    const today = Date.now()
+    const month_diff = today - birthDate.getTime();
+    const age_diff = new Date(month_diff)
 
+    const year = age_diff.getUTCFullYear()
+    const month = age_diff.getUTCMonth()
+
+    const yearOld = Math.abs(year-1970);
+    const monthOld = Math.abs(month)
+
+    return `${yearOld} year(s) ${monthOld} month(s) old`
+}
 
 function get(request, response) {
     const htmlHead = /* html */ `
@@ -29,7 +42,7 @@ function get(request, response) {
         const petList = pets.map( pets => {
            return /* html */ `
             <li>
-                Hiya ${pets.pet_name}, you are a ${pets.pet_kind}, your birthday is ${sliceDate(pets.birth_date)}
+                Hiya ${pets.pet_name}, you are a ${pets.pet_kind}, your birthday is ${sliceDate(pets.birth_date)}, your age is ${calcAge(pets.birth_date)}
                 <form action="/delete-pet" method="POST" class="inline">
                     <button name="id" value="${pets.id}" aria-label="Delete ${pets.pet_name}">
                         &times;
