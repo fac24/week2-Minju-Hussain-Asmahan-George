@@ -10,7 +10,7 @@ CREATE TABLE pet_type (
 
 CREATE TABLE pets (
     id SERIAL PRIMARY KEY,
-    pet_name VARCHAR(255) NOT NULL,
+    pet_name VARCHAR(255),
     type_id INTEGER REFERENCES pet_type(id),
     birth_date DATE
 );

@@ -17,11 +17,12 @@ function birthdays() {
     return db.query(birthdays)
 }
 
-function selectPet() {
+function selectPet(filter) {
     const selectPets = /* sql */ `
     SELECT pets.id, pets.pet_name, pets.birth_date, pet_type.pet_kind
     FROM pets
-        INNER JOIN pet_type ON pets.type_id = pet_type.id;
+        INNER JOIN pet_type ON pets.type_id = pet_type.id
+        WHERE ${filter};
     `;
     return db.query(selectPets).then((result) => result.rows)
 }

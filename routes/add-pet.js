@@ -70,17 +70,27 @@ function get(request, response) {
     }
 }
 
+function sanitize(unsafe_body) {
+  let safe_body = {};
+  for (let [key, value] of Object.entries(unsafe_body)) {
+    // THIS IS NOT ENOUGH! Use a proper XSS preventation package
+    safe_body[key] = value.replaceAll("<", "&lt;");
+  }
+  return safe_body;
+}
+
 function post(request, response) {
   try{
 
-    const {name, type, birth} = request.body;
-    model.addPet(name,type,birth)
+    const {name, type, birth} = sanitize(request.body);
+    model.addPet(name,type,birth).then(() => {
+      response.redirect("/birthdays"); // Redirect to birthdays when ready to.
+    })
   }
   catch(error){
         console.error(error)
         response.status(404).send('<h1>Error handling</h1>')
     }
-  response.redirect("/birthdays"); // Redirect to birthdays when ready to.
 }
 
 module.exports = { get, post };
