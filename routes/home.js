@@ -27,8 +27,8 @@ function get(request, response) {
               </li>
           </ul>
   
-          <a href="/add-pet">add-pet</a>
-          <a href="/birthdays">view birthdays</a>
+          <a href="/add-pet" class="add-pet-link">add-pet</a>
+          <a href="/birthdays" class="birthday-link">view birthdays</a>
       </main>
       
   </body>
