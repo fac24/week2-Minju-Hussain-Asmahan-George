@@ -24,6 +24,7 @@ function calcAge(data) {
 
 
 function get(request, response) {
+
   const filterTerm = request.query.type
   let filterType =''
   if(filterTerm & filterTerm != 0) {
@@ -35,11 +36,11 @@ function get(request, response) {
   
   const htmlHead = /* html */ `
     <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>PET Birthdays</title>
-      <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PET Birthdays</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
   `;
 
@@ -106,8 +107,12 @@ function get(request, response) {
                 ${htmlBody}
             </html>
         `;
-    response.send(html);
-  });
-}
+      response.send(html);
+    }).catch((error)=>{
+      console.error(error);
+      response.status(404).send(`<h1>Error handling</h1>`)
+    })
+    }
+
 
 module.exports = { get };

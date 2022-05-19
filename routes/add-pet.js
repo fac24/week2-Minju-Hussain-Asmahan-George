@@ -1,7 +1,8 @@
 const model = require("../database/model.js");
 
 function get(request, response) {
-  const htmlHead = /* html */ `
+  try {
+    const htmlHead = /* html */ `
       <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -61,7 +62,12 @@ function get(request, response) {
       </body>
     </html>
     `;
-  response.send(html);
+      response.send(html);
+    }
+    catch (error){
+      console.error(error);
+      response.status(404).send('<h1>Error handling</h1>');
+    }
 }
 
 function sanitize(unsafe_body) {
@@ -74,11 +80,17 @@ function sanitize(unsafe_body) {
 }
 
 function post(request, response) {
+  try{
+
     const {name, type, birth} = sanitize(request.body);
     model.addPet(name,type,birth).then(() => {
       response.redirect("/birthdays"); // Redirect to birthdays when ready to.
     })
-
+  }
+  catch(error){
+        console.error(error)
+        response.status(404).send('<h1>Error handling</h1>')
+    }
 }
 
 module.exports = { get, post };
