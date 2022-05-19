@@ -46,6 +46,10 @@ describe("Birthday Page tests", () => {
      
 })
 
+after(() => {
+    cy.task("resetDb");
+});
+
 /* 
 it("", () => {
         
