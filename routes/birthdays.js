@@ -1,4 +1,4 @@
-const db = require("../database/connection.js");
+const model = require("../database/model.js");
 
 function sliceDate(data){
     const dateFormat = String(data).slice(4,11)
@@ -31,13 +31,8 @@ function get(request, response) {
     </head>
   `;
 
-  const selectPets = /* sql */ `
-        SELECT pets.id, pets.pet_name, pets.birth_date, pet_type.pet_kind
-        FROM pets
-            INNER JOIN pet_type ON pets.type_id = pet_type.id;
-    ``
-  db.query(selectPets).then((result) => {
-    const pets = result.rows;
+
+    model.selectPet().then((pets) => {
     const petList = pets.map((pets) => {
       return /* html */ `
             <li class="pet-card">
