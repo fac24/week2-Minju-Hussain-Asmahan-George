@@ -10,25 +10,36 @@ function get(request, response) {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 
-      <title>APP NAME</title>
+      <title>PurrThday</title>
   </head>
-  <body>
+  <body class="landing-body">
       <header>
-          <h1>APP NAME</h1>
-          <p>birhtday calender</p>
+          <h1>PurrThday</h1>
+          <p>the birhtday calender app</p>
       </header>
-      <main>
+      <main class="landing-main">
           <h2>upcoming birthdays</h2>
           <ul>
-              <li>
-              tom - cat - turning 4 - finsbury park
-              date 24/05/2022
-              time: 16:30 - 18:00
+              <li class="pet-card">
+              <img src="https://source.unsplash.com/random/100x100/?cat">
+  
+              <div class='pet-info-container'>
+              Hiya 
+              <p class="name">Name: tom</p>
+              <p class="kind">Kind: cat</p>
+              <p class="time">meet up on 24/05 between 16:30-18:00 at finsbury park by the pond</p>
+              </div>
+                  <form class="delete-button" action="/delete-pet" method="POST" class="inline">
+                  <button >
+                      &times;
+                  </button>
+              </form>
               </li>
           </ul>
   
-          <a href="/add-pet" class="add-pet-link">add-pet</a>
-          <a href="/birthdays" class="birthday-link">view birthdays</a>
+
+          <a class="link-as-button" href="/add-pet">add-pet</a>
+          <a class="link-as-button" href="/birthdays">view birthdays</a>
       </main>
       
   </body>
