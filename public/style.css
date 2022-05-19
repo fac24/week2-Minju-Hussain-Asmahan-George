@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Source+Serif+Pro:ital,wght@0,900;1,400;1,700&display=swap");
+
 html,
 body,
 div,
@@ -103,7 +105,9 @@ section {
 }
 body {
   line-height: 1;
-  font-family: "Jost", sans-serif;
+  /* font-family: "Jost", sans-serif; */
+  font-family: "Shadows Into Light", cursive;
+  /* font-family: "Source Serif Pro", serif; */
 }
 ol,
 ul {
@@ -130,11 +134,12 @@ table {
 
 li {
   max-width: 320px;
-  margin: 10px;
+  margin: 20px;
 }
 
 img {
-  border-radius: 10px;
+  /* border-radius: 10px 0 0 10px; */
+  /* border-radius: 10px; */
 }
 
 header h1 {
@@ -145,6 +150,7 @@ body {
   padding: 10px;
   display: grid;
   place-content: center;
+  text-transform: capitalize;
 }
 
 main {
@@ -162,17 +168,20 @@ main {
 .pet-card {
   position: relative;
   display: flex;
-  text-transform: capitalize;
+  background: lightcoral;
+  border-radius: 10px;
+  padding: 10px;
 }
 
-.delete-button {
+.delete-button-container {
   position: absolute;
   top: 0;
   right: 0;
 }
 
 .pet-info-container {
-  margin: 5px;
+  margin-top: 5px;
+  margin-left: 10px;
 }
 
 .name {
@@ -186,7 +195,6 @@ main {
   font-weight: bold;
   border-radius: 10px;
   color: white;
-
   padding: 5px 20px;
   background: red;
 }
@@ -201,4 +209,37 @@ main {
 
 .mb-5 {
   margin-bottom: 15px;
+}
+
+.delete-button {
+  border: none;
+  font-weight: 800;
+  font-size: 20px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background: red;
+  font-size: 40px;
+  border-radius: 10px;
+}
+
+.submit-button {
+  border: none;
+  font-size: 20px;
+  background: palegreen;
+  color: black;
+  cursor: pointer;
+}
+
+.pet-form {
+  border: dashed peachpuff 5px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 600;
 }

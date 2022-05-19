@@ -1,23 +1,23 @@
 const model = require("../database/model.js");
 
-function sliceDate(data){
-    const dateFormat = String(data).slice(4,11)
-    return dateFormat;
+function sliceDate(data) {
+  const dateFormat = String(data).slice(4, 11);
+  return dateFormat;
 }
 
-function calcAge(data){
-    const birthDate = new Date(data)
-    const today = Date.now()
-    const month_diff = today - birthDate.getTime();
-    const age_diff = new Date(month_diff)
+function calcAge(data) {
+  const birthDate = new Date(data);
+  const today = Date.now();
+  const month_diff = today - birthDate.getTime();
+  const age_diff = new Date(month_diff);
 
-    const year = age_diff.getUTCFullYear()
-    const month = age_diff.getUTCMonth()
+  const year = age_diff.getUTCFullYear();
+  const month = age_diff.getUTCMonth();
 
-    const yearOld = Math.abs(year-1970);
-    const monthOld = Math.abs(month)
+  const yearOld = Math.abs(year - 1970);
+  const monthOld = Math.abs(month);
 
-    return `${yearOld} year(s) ${monthOld} month(s) old`
+  return `${yearOld} year(s) ${monthOld} month(s) old`;
 }
 
 function get(request, response) {
