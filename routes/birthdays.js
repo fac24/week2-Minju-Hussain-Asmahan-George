@@ -1,5 +1,25 @@
 const db = require("../database/connection.js");
 
+function sliceDate(data){
+    const dateFormat = String(data).slice(4,11)
+    return dateFormat;
+}
+
+function calcAge(data){
+    const birthDate = new Date(data)
+    const today = Date.now()
+    const month_diff = today - birthDate.getTime();
+    const age_diff = new Date(month_diff)
+
+    const year = age_diff.getUTCFullYear()
+    const month = age_diff.getUTCMonth()
+
+    const yearOld = Math.abs(year-1970);
+    const monthOld = Math.abs(month)
+
+    return `${yearOld} year(s) ${monthOld} month(s) old`
+}
+
 function get(request, response) {
   const htmlHead = /* html */ `
     <head>
@@ -15,7 +35,7 @@ function get(request, response) {
         SELECT pets.id, pets.pet_name, pets.birth_date, pet_type.pet_kind
         FROM pets
             INNER JOIN pet_type ON pets.type_id = pet_type.id;
-    `;
+
   db.query(selectPets).then((result) => {
     const pets = result.rows;
     const petList = pets.map((pets) => {
@@ -26,7 +46,7 @@ function get(request, response) {
             Hiya 
             <p class="name">Name: ${pets.pet_name}</p>
             <p class="kind">Kind: ${pets.pet_kind}</p>
-            <p class="birthday">birthday: ${pets.birth_date}</p>
+            <p class="birthday">birthday: ${sliceDate(pets.birth_date)}, your age is ${calcAge(pets.birth_date)}</p>
             
             </div>
                 <form class="delete-button" action="/delete-pet" method="POST" class="inline">
@@ -38,6 +58,7 @@ function get(request, response) {
     });
 
     const htmlBody = /* html */ `
+
             <body>
             <header class="center">
           <h1 class="mb-5">PurrThday Page</h1>
