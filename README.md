@@ -13,7 +13,7 @@ https://purr-thday.herokuapp.com/birthdays
 
 #### To run tests:
 - Install Cyress `npm install -D cypress`.
-- While n the project folder, run `npm run test`.
+- While in the project folder, run `npm run test`.
 - Edit the test.js file to make your own tests.
 - Have the server running in one terminal and Cypress 🖥
 
@@ -24,14 +24,14 @@ As a user, I want:
 - To see when the next pet's birthday is on the list;
 - To view what age a pet is going to be;
 - To filter by type of pet; and 
-- A mobile First Design
+- A mobile First Design.
 
 ## Stretch Goals
-- Buttons to say attending/not attending pet birthday party
-- Picture upload
-- Homepage per pet
+- Buttons to say attending/not attending pet's birthday party; 
+- Picture upload; and
+- Homepage per pet.
 
 ## Screenshots:
-// Mobile and Desktop:
+- Mobile and Desktop:
 
 
