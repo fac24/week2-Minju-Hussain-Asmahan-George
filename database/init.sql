@@ -16,10 +16,10 @@ CREATE TABLE pets (
 );
 
 INSERT INTO pet_type (pet_kind) VALUES 
-    ('Cat'),
-    ('Dog'),
-    ('Bird'),
-    ('Rabbit');
+    ('cat'),
+    ('dog'),
+    ('bird'),
+    ('rabbit');
 
 
 INSERT INTO pets (pet_name, type_id, birth_date) VALUES 
