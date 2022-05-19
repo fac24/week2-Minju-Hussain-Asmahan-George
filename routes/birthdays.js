@@ -69,7 +69,7 @@ function get(request, response) {
           <a class="link-as-button" href="/add-pet">add-pet</a>
         </header>
         <main>
-          <form>
+          <form id="filter-form">
           <label for="filterType">Filter By Type Of Pet:</label>
             <select id="filterType" placeholder="type of pet filter" name="type" aria-label="dropdown menu for filtering by pet types">
               <option aria-label="unfiltered" value="0">Unfiltered</option>
@@ -78,7 +78,7 @@ function get(request, response) {
               <option aria-label="bird" value="3">Bird</option>
               <option aria-label="rabbit" value="4">Rabbit</option>
             </select>
-            <button>Submit</button>
+            <button aria-label="Filter the pets">Filter</button>
           </form>
           <ul class="birthday-car-contianer">${petList.join("")}</ul>
         </main>
