@@ -1,4 +1,4 @@
-const db = require("../database/connection.js");
+const model = require("../database/model.js");
 
 function get(request, response) {
     const htmlHead = /* html */ `
@@ -12,7 +12,7 @@ function get(request, response) {
     `;
     
     const petForm = /* html */ `
-    <form action="/add-pet" method="POST">
+    <form id="pet-form" action="/add-pet" method="POST">
       <label for="name">Pet Name:</label>
       <input type="text" id="name" placeholder="name" name="name" aria-label="enter your pet name"><br>
       <label for="type">Type:</label>
@@ -24,8 +24,6 @@ function get(request, response) {
       </select><br>
       <label for="birth">Date of birth:</label>
       <input type="date" id="birth" placeholder="Date of birth" name="birth" aria-label="put birth date of your pet"><br>       
-      <label for="location">Location:</label>
-      <input type="text" id="location" placeholder="location" name="location" aria-label="enter your pet birthday location"><br>  
            
       <button type="Submit" value="Submit" aria-label="submit the add pet form">Submit</button>
     </form>
@@ -47,9 +45,9 @@ function get(request, response) {
 }
 
 function post(request, response) {
-    const {name, type, birth, location} = request.body;
-    db.query(`INSERT INTO pets (pet_name, type_id, birth_date) VALUES($1, $2, $3)`, [name, type, birth]) 
-    response.redirect("/add-pet"); // Redirect to birthdays when ready to.
+    const {name, type, birth} = request.body;
+    model.addPet(name,type,birth)
+    response.redirect("/birthdays"); // Redirect to birthdays when ready to.
 }
 
 module.exports = { get, post }

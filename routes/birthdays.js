@@ -1,4 +1,4 @@
-const db = require("../database/connection.js");
+const model = require("../database/model.js");
 
 function sliceDate(data){
     const dateFormat = String(data).slice(4,11)

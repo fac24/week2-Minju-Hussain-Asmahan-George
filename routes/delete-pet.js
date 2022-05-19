@@ -1,9 +1,8 @@
-const db = require("../database/connection.js");
+const model = require("../database/model.js");
 
 function post(request, response) {
     const {id} = request.body;
-    const deletePet = /* sql */ `DELETE FROM pets WHERE id = ${id}`
-    db.query(deletePet).then(() => {
+    model.deletePet(id).then(() => {
         response.redirect("/birthdays"); // Redirect to birthdays when ready to.
     }) 
     
