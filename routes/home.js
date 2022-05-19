@@ -29,11 +29,7 @@ function get(request, response) {
               <p class="kind">Kind: cat</p>
               <p class="time">meet up on 24/05 between 16:30-18:00 at finsbury park by the pond</p>
               </div>
-                  <form class="delete-button" action="/delete-pet" method="POST" class="inline">
-                  <button >
-                      &times;
-                  </button>
-              </form>
+          
               </li>
           </ul>
   
