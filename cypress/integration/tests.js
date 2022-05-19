@@ -10,11 +10,11 @@ describe("Home Page tests", () => {
 
     });
     it("Add pet link works", () => {
-        cy.visit("/").get(".add-pet-link").click();
+        cy.visit("/").get("#add-link").click();
         cy.url().should('include', '/add-pet')
     });
     it("Birthdays link works", () => {
-        cy.visit("/").get(".birthday-link").click();
+        cy.visit("/").get("#birthday-link").click();
         cy.url().should('include', '/birthdays')
     });
      

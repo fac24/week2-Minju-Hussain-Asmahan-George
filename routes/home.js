@@ -38,8 +38,8 @@ function get(request, response) {
           </ul>
   
 
-          <a class="link-as-button" href="/add-pet">add-pet</a>
-          <a class="link-as-button" href="/birthdays">view birthdays</a>
+          <a class="link-as-button" id="add-link" href="/add-pet">add-pet</a>
+          <a class="link-as-button" id="birthday-link" href="/birthdays">view birthdays</a>
       </main>
       
   </body>
