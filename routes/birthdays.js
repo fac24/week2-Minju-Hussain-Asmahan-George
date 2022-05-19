@@ -20,11 +20,14 @@ function calcAge(data){
     return `${yearOld} year(s) ${monthOld} month(s) old`
 }
 
+
+
+
 function get(request, response) {
   const filterTerm = request.query.type
   let filterType =''
   if(filterTerm & filterTerm != 0) {
-    filterType = `pet_type.id = ${filterTerm}`
+    filterType = `pet_type.id = ${filterTerm.replaceAll("<", "&lt;")}`
   } else {
     filterType = "1=1"
   }
