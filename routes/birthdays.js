@@ -1,5 +1,12 @@
 const db = require("../database/connection.js");
 
+function sliceDate(data){
+    const dateFormat = String(data).slice(4,11)
+    return dateFormat;
+}
+
+
+
 function get(request, response) {
     const htmlHead = /* html */ `
     <head>
@@ -18,10 +25,11 @@ function get(request, response) {
     `
     db.query(selectPets).then((result) => {
         const pets = result.rows;
+        console.log(pets)
         const petList = pets.map( pets => {
            return /* html */ `
             <li>
-                Hiya ${pets.pet_name}, you are a ${pets.pet_kind}, your birthday is ${pets.birth_date}
+                Hiya ${pets.pet_name}, you are a ${pets.pet_kind}, your birthday is ${sliceDate(pets.birth_date)}
                 <form action="/delete-pet" method="POST" class="inline">
                     <button name="id" value="${pets.id}" aria-label="Delete ${pets.pet_name}">
                         &times;
