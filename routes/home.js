@@ -39,7 +39,7 @@ function get(request, response) {
     </div>
     
     </li>
-    </u
+    </ul>
     <a class="link-as-button" id="add-link" href="/add-pet">add-pet</a>
     <a class="link-as-button" id="birthday-link" href="/birthdays">view birthdays</a>
     </main>
