@@ -14,17 +14,25 @@ function get(request, response) {
       </head>
     `;
 
+    function todaysDate(date){
+      const today = date;
+      const dd = String(today.getDate()).padStart(2, '0');
+      const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      const yyyy = today.getFullYear();
+      return yyyy + '-' + mm  + '-' + dd
+    }
+
     const petForm = /* html */ `
     <form class="pet-form" id="pet-form" action="/add-pet" method="POST">
     <div>
       <label for="name">Pet Name:</label>
-      <input type="text" id="name" placeholder="name" name="name" aria-label="enter your pet name">
+      <input type="text" id="name" placeholder="name" name="name" >
       </div>
       <br>
 
     <div>
       <label for="type">Type:</label>
-      <select id="type" placeholder="type of pet" name="type" aria-label="dropdown menu for pet types">
+      <select id="type" placeholder="type of pet" name="type">
         <option aria-label="cat" value="1">Cat</option>
         <option aria-label="dog" value="2">Dog</option>
         <option aria-label="bird" value="3">Bird</option>
@@ -36,7 +44,7 @@ function get(request, response) {
       <div>
 
       <label for="birth">Date of birth:</label>
-      <input type="date" id="birth" placeholder="Date of birth" name="birth" aria-label="put birth date of your pet">
+      <input type="date" id="birth" placeholder="Date of birth" name="birth" max="${todaysDate(new Date())}">
       </div>
       
       <br>       
@@ -67,7 +75,7 @@ function get(request, response) {
     response.send(html);
   } catch (error) {
     console.error(error);
-    response.status(404).send("<h1>Error handling</h1>");
+    response.status(500).send("<h1>Error handling</h1>");
   }
 }
 
@@ -80,16 +88,17 @@ function sanitize(unsafe_body) {
   return safe_body;
 }
 
-function post(request, response) {
-  try {
+  function post(request, response) {
     const { name, type, birth } = sanitize(request.body);
-    model.addPet(name, type, birth).then(() => {
-      response.redirect("/birthdays"); // Redirect to birthdays when ready to.
-    });
-  } catch (error) {
-    console.error(error);
-    response.status(404).send("<h1>Error handling</h1>");
+    model
+      .addPet(name, type, birth)
+      .then(() => {
+        response.redirect("/birthdays"); // Redirect to birthdays when ready to.
+      })
+      .catch((error) => {
+        console.error(error);
+        response.status(500).send(`<h1>something went wrong <a href="/">Go back to home page</a></h1>`);
+      });
   }
-}
 
 module.exports = { get, post };
