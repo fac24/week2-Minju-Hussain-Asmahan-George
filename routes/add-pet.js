@@ -14,6 +14,14 @@ function get(request, response) {
       </head>
     `;
 
+    function todaysDate(date){
+      const today = date;
+      const dd = String(today.getDate()).padStart(2, '0');
+      const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      const yyyy = today.getFullYear();
+      return yyyy + '-' + mm  + '-' + dd
+    }
+
     const petForm = /* html */ `
     <form class="pet-form" id="pet-form" action="/add-pet" method="POST">
     <div>
@@ -36,7 +44,7 @@ function get(request, response) {
       <div>
 
       <label for="birth">Date of birth:</label>
-      <input type="date" id="birth" placeholder="Date of birth" name="birth">
+      <input type="date" id="birth" placeholder="Date of birth" name="birth" max="${todaysDate(new Date())}">
       </div>
       
       <br>       
