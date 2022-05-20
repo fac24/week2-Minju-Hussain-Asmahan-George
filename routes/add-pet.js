@@ -80,15 +80,17 @@ function sanitize(unsafe_body) {
   return safe_body;
 }
 
-function post(request, response) {
-  const { name, type, birth } = sanitize(request.body);
-  model.addPet(name, type, birth).then(() => {
-      response.redirect("/birthdays"); // Redirect to birthdays when ready to.
-    }).catch((error)=>{
-      console.error(error);
-      response.status(500).send("<h1>something went wrong <a href="/">Go back to home page</a></h1>");
-    })
+  function post(request, response) {
+    const { name, type, birth } = sanitize(request.body);
+    model
+      .addPet(name, type, birth)
+      .then(() => {
+        response.redirect("/birthdays"); // Redirect to birthdays when ready to.
+      })
+      .catch((error) => {
+        console.error(error);
+        response.status(500).send(`<h1>something went wrong <a href="/">Go back to home page</a></h1>`);
+      });
   }
-
 
 module.exports = { get, post };
