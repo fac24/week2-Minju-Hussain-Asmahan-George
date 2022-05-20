@@ -23,7 +23,7 @@ function calcAge(data) {
 function get(request, response) {
   const filterTerm = request.query.type;
   let filterType = "";
-  if (filterTerm & (filterTerm != 0)) {
+  if (filterTerm && (filterTerm != 0)) {
     filterType = `pet_type.id = ${filterTerm.replaceAll("<", "&lt;")}`;
   } else {
     filterType = "1=1";

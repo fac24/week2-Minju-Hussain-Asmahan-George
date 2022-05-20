@@ -18,13 +18,13 @@ function get(request, response) {
     <form class="pet-form" id="pet-form" action="/add-pet" method="POST">
     <div>
       <label for="name">Pet Name:</label>
-      <input type="text" id="name" placeholder="name" name="name" aria-label="enter your pet name">
+      <input type="text" id="name" placeholder="name" name="name" >
       </div>
       <br>
 
     <div>
       <label for="type">Type:</label>
-      <select id="type" placeholder="type of pet" name="type" aria-label="dropdown menu for pet types">
+      <select id="type" placeholder="type of pet" name="type">
         <option aria-label="cat" value="1">Cat</option>
         <option aria-label="dog" value="2">Dog</option>
         <option aria-label="bird" value="3">Bird</option>
@@ -36,12 +36,12 @@ function get(request, response) {
       <div>
 
       <label for="birth">Date of birth:</label>
-      <input type="date" id="birth" placeholder="Date of birth" name="birth" aria-label="put birth date of your pet">
+      <input type="date" id="birth" placeholder="Date of birth" name="birth">
       </div>
       
       <br>       
            
-      <button class="link-as-button submit-button" type="Submit" value="Submit" aria-label="submit the add pet form">Submit</button>
+      <button class="link-as-button submit-button" type="Submit" value="Submit">Submit</button>
     </form>
     `;
 
