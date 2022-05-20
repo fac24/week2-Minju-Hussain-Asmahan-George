@@ -6,7 +6,7 @@ function post(request, response) {
         response.redirect("/birthdays"); // Redirect to birthdays when ready to.
     }).catch((error)=>{
         console.error(error);
-        response.status(500).send(`<h1>something went wrong <a href="/">Go back to home page</></h1>`)
+        response.status(500).send(`<h1>something went wrong <a href="/">Go back to home page</a></h1>`)
     })
 
 }

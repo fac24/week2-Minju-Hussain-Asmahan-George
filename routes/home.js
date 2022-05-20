@@ -1,8 +1,13 @@
 //const db = require("../database/connection.js");
 
+function errorPost(){
+  const error = new Error("Retrieving posts failed");
+  return Promise.reject(error);
+}
+
 function get(request, response) {
-  try {
-    const html = /*html*/ `
+errorPost().then(()=>{
+  const html = /*html*/ `
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -33,9 +38,7 @@ function get(request, response) {
               </div>
           
               </li>
-          </ul>
-  
-
+          </u
           <a class="link-as-button" id="add-link" href="/add-pet">add-pet</a>
           <a class="link-as-button" id="birthday-link" href="/birthdays">view birthdays</a>
       </main>
@@ -43,11 +46,11 @@ function get(request, response) {
   </body>
   </html>
     `;
-    response.send(html);
-  } catch (error) {
-    console.error(error);
-    response.status(404).send("<h1>Error handling</h1>");
-  }
+    response.send(html)
+}).catch((error)=>{
+  console.error(error);
+  response.status(404).send(`<h1>Posts not found</h1>`);
+})
 }
 
 module.exports = { get };
