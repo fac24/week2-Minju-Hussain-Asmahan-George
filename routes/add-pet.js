@@ -41,7 +41,7 @@ function get(request, response) {
       
       <br>       
            
-      <button class="link-as-button submit-button" type="Submit" value="Submit">Submit</button>
+      <button class="link-as-button submit-button" type="Submit" value="Submit" aria-label="submit the add pet form">Submit</button>
     </form>
     `;
 
