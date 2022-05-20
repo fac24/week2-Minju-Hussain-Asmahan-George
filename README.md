@@ -40,8 +40,6 @@ As a user, I want:
 - Mobile and Desktop:
 
 ## DB schema and diagram
+- db diagram [link](https://dbdiagram.io/d/6282a2a97f945876b62bfe9b)
 - schema screenshot:
-- diagram screenshot:
-
-
-
+![birth date](https://user-images.githubusercontent.com/48757517/169522164-07de93e4-6ca6-4191-99de-5dd05bfb5183.png)
