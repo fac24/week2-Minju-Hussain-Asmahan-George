@@ -14,7 +14,7 @@ https://purr-thday.herokuapp.com/birthdays
 #### To run tests:
 - While in the project folder, run `npm run test`.
 - Edit the test.js file to make your own tests.
-- Have the server running in one terminal and Cypress 🖥
+- Have the server running in one terminal and Cypress in another 🖥
 
 ## User Stories
 As a user, I want:
